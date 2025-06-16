@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luca - Frontend Developer</title>
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px 50px;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        /* Contenu principal */
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            height: calc(100vh - 100px);
+        }
+        
+        .hero-content {
+            max-width: 500px;
+        }
+        
+        .greeting {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .title {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .front-text {
+            color: #2563eb; /* Bleu */
+        }
+        
+        .end-text {
+            color: #000; /* Noir */
+        }
+        
+        .description {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: #333;
+            color: white;
+        }
+        
+        .btn-secondary {
+            border: 1px solid #333;
+            color: #333;
+        }
+        
+        .profile-image {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 10px solid #f0f0f0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">IwasDECL</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Projects</a>
+            <a href="#">About</a>
+        </div>
+    </nav>
+    
+    <div class="hero-container">
+        <div class="hero-content">
+            <p class="greeting">Hey, I'm Luca</p>
+            <h2 class="title">
+                <span class="front-text">Front</span>
+                <span class="end-text">end Developer</span>
+            </h2>
+            <p class="description">I'm a frontend developer based in Italy. I help you build beautiful websites your users will love.</p>
+            <div class="buttons">
+                <a href="#" class="btn btn-primary">Get In Touch</a>
+                <a href="#" class="btn btn-secondary">Browse Projects</a>
+            </div>
+        </div>
+        
+        <img src="profile.jpg" alt="Photo de profil" class="profile-image">
+    </div>
+</body>
+</html>
