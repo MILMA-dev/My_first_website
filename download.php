@@ -29,9 +29,13 @@ if (file_exists($file)) {
     $stmt_upd = $pdo->prepare("UPDATE download_tokens SET used_count = used_count + 1 WHERE id = ?");
     $stmt_upd->execute([$product['token_id']]);
 
+    // Serve with a friendly name based on the title
+    $ext = pathinfo($file, PATHINFO_EXTENSION);
+    $friendly_name = preg_replace("/[^a-zA-Z0-9]/", "_", $product['title']) . "." . $ext;
+
     header('Content-Description: File Transfer');
     header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename="' . basename($file) . '"');
+    header('Content-Disposition: attachment; filename="' . $friendly_name . '"');
     header('Expires: 0');
     header('Cache-Control: must-revalidate');
     header('Pragma: public');

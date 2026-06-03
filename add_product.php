@@ -1,6 +1,8 @@
 <?php
 require_once 'includes/db.php';
 require_once 'includes/auth.php';
+require_once 'includes/config.php';
+require_once 'includes/layout.php';
 requireRole('seller');
 
 $error = '';
@@ -8,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = trim($_POST['title']);
     $description = trim($_POST['description']);
     $price = floatval($_POST['price']);
-    $category = trim($_POST['category']);
+    $category = $_POST['category'];
 
     $cover = $_FILES['cover'];
     $product_file = $_FILES['product_file'];
@@ -23,10 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!in_array($cover_ext, $allowed_img)) {
             $error = "Format d'image non supporté.";
         } elseif (in_array($file_ext, $forbidden_files)) {
-            $error = "Ce type de fichier n'est pas autorisé pour des raisons de sécurité.";
+            $error = "Ce type de fichier n'est pas autorisé.";
         } else {
             $cover_name = uniqid() . '.' . $cover_ext;
-        $file_name = uniqid() . '.' . $file_ext;
+            // Store with original name prefix for traceability as requested
+            $clean_name = preg_replace("/[^a-zA-Z0-9]/", "_", $title);
+            $file_name = $clean_name . "_" . uniqid() . '.' . $file_ext;
 
             move_uploaded_file($cover['tmp_name'], 'uploads/covers/' . $cover_name);
             move_uploaded_file($product_file['tmp_name'], 'uploads/products/' . $file_name);
@@ -38,39 +42,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
     } else {
-        $error = "Veuillez remplir tous les champs et uploader les fichiers.";
+        $error = "Veuillez remplir tous les champs.";
     }
 }
+
+renderHeader("Vendre un produit - MicroSaaS");
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Ajouter un produit - MicroSaaS</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="index.php">Boutique</a>
-            <a href="dashboard.php">Tableau de bord</a>
-            <a href="logout.php">Déconnexion</a>
-        </nav>
-    </header>
-    <main>
-        <h2>Ajouter un nouveau produit numérique</h2>
-        <?php if ($error): ?><p class="error"><?php echo $error; ?></p><?php endif; ?>
-        <form method="POST" enctype="multipart/form-data">
-            <input type="text" name="title" placeholder="Titre du produit" required>
-            <textarea name="description" placeholder="Description"></textarea>
-            <input type="number" step="0.01" name="price" placeholder="Prix (€)" required>
-            <input type="text" name="category" placeholder="Catégorie (E-book, Template, etc.)">
-            <label>Image de couverture :</label>
-            <input type="file" name="cover" accept="image/*" required>
-            <label>Fichier numérique (ZIP, PDF, etc.) :</label>
-            <input type="file" name="product_file" required>
-            <button type="submit">Mettre en ligne</button>
-        </form>
-    </main>
-</body>
-</html>
+<h1>Mettre en ligne un produit</h1>
+<?php if ($error): ?><p class="error"><?php echo $error; ?></p><?php endif; ?>
+
+<form method="POST" enctype="multipart/form-data" class="auth-container" style="max-width: 600px;">
+    <input type="text" name="title" placeholder="Titre du produit" required>
+    <textarea name="description" placeholder="Description détaillée" rows="5"></textarea>
+    <input type="number" step="1" name="price" placeholder="Prix (<?php echo CURRENCY; ?>)" required>
+
+    <label>Catégorie :</label>
+    <select name="category" required>
+        <?php foreach (CATEGORIES as $cat): ?>
+            <option value="<?php echo $cat; ?>"><?php echo $cat; ?></option>
+        <?php endforeach; ?>
+    </select>
+
+    <label>Image de couverture :</label>
+    <input type="file" name="cover" accept="image/*" required>
+
+    <label>Fichier numérique :</label>
+    <input type="file" name="product_file" required>
+
+    <button type="submit" class="btn btn-primary" style="margin-top:1rem;">Publier</button>
+</form>
+<?php renderFooter(); ?>
