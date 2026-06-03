@@ -17,14 +17,13 @@ $order = $stmt->fetch();
 
 if (isset($_POST['method'])) {
     $method = $_POST['method'];
-
-    // Update payment method
     $stmt = $pdo->prepare("UPDATE orders SET payment_method = ? WHERE id = ?");
     $stmt->execute([$method, $order_id]);
 }
 
 if (isset($_POST['process_payment'])) {
-    sleep(1);
+    // Reduced latency
+    usleep(500000);
     $pdo->prepare("UPDATE orders SET status = 'paid' WHERE id = ?")->execute([$order_id]);
 
     $stmt = $pdo->prepare("SELECT id FROM order_items WHERE order_id = ?");
@@ -99,7 +98,7 @@ document.getElementById('payForm').onsubmit = function(e) {
 
     setTimeout(() => {
         this.submit();
-    }, 1500);
+    }, 800);
 };
 </script>
 <?php renderFooter(); ?>

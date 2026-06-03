@@ -21,13 +21,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
     if (!in_array($id, $_SESSION['cart'])) {
         $_SESSION['cart'][] = $id;
     }
-    // As requested: No automatic redirect to cart
     $added = true;
 }
 
 renderHeader(e($product['title']) . " - MicroSaaS");
 ?>
-<div class="profile-section" style="margin-top: 2rem;">
+<div style="margin-bottom: 2rem;">
+    <a href="javascript:history.back()" class="btn btn-outline" style="text-decoration:none;"><i class="fas fa-arrow-left"></i> Retour à la boutique</a>
+</div>
+
+<div class="profile-section">
     <div style="flex: 1;">
         <img src="uploads/covers/<?php echo $product['cover_image']; ?>" style="width:100%; border: 1px solid var(--border-color);">
     </div>

@@ -10,11 +10,11 @@ if (isLoggedIn()) {
 
 $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = trim($_POST['email']);
+    $identifier = trim($_POST['identifier']); // Can be email or username
     $password = $_POST['password'];
 
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->execute([$email]);
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ? OR username = ?");
+    $stmt->execute([$identifier, $identifier]);
     $user = $stmt->fetch();
 
     if ($user && password_verify($password, $user['password'])) {
@@ -39,7 +39,7 @@ renderHeader("Connexion - MicroSaaS");
     <?php if (isset($_GET['registered'])): ?><p class="success">Inscription réussie, connectez-vous.</p><?php endif; ?>
     <?php if ($error): ?><p class="error"><?php echo $error; ?></p><?php endif; ?>
     <form method="POST">
-        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="identifier" placeholder="Email ou Nom d'utilisateur" required>
         <input type="password" name="password" placeholder="Mot de passe" required>
         <button type="submit" class="btn btn-primary" style="width:100%;">Se connecter</button>
     </form>

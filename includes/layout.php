@@ -25,24 +25,41 @@ function renderHeader($title = "MicroSaaS") {
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <body>
-    <header>
-        <div class="logo"><a href="index.php" style="text-decoration:none; color:inherit;">MicroSaaS</a></div>
-        <nav>
-            <a href="index.php"><i class="fas fa-shop"></i> Boutique</a>
+
+    <div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">MicroSaaS</div>
+            <button onclick="toggleSidebar()" style="background:none; border:none; color:inherit; cursor:pointer;"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="sidebar-nav">
+            <a href="index.php"><i class="fas fa-house"></i> Accueil</a>
             <?php if (isLoggedIn()): ?>
+                <a href="profile.php"><i class="fas fa-user"></i> Mon Profil</a>
                 <a href="my_purchases.php"><i class="fas fa-bag-shopping"></i> Mes Achats</a>
+                <a href="history.php"><i class="fas fa-clock-rotate-left"></i> Historique</a>
                 <?php if (hasRole('seller') || hasRole('admin')): ?>
-                    <a href="dashboard.php"><i class="fas fa-chart-line"></i> Vendeur</a>
+                    <a href="dashboard.php"><i class="fas fa-chart-line"></i> Dashboard Vendeur</a>
                 <?php endif; ?>
                 <?php if (hasRole('admin')): ?>
-                    <a href="admin_dashboard.php"><i class="fas fa-user-shield"></i> Admin</a>
+                    <a href="admin_dashboard.php"><i class="fas fa-user-shield"></i> Administration</a>
                 <?php endif; ?>
-                <a href="profile.php"><i class="fas fa-user"></i> Profil</a>
-                <a href="logout.php"><i class="fas fa-right-from-bracket"></i></a>
+                <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border-color);">
+                <a href="logout.php" style="color: var(--error-color);"><i class="fas fa-right-from-bracket"></i> Déconnexion</a>
             <?php else: ?>
-                <a href="login.php">Connexion</a>
-                <a href="register.php">Inscription</a>
+                <a href="login.php"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+                <a href="register.php"><i class="fas fa-user-plus"></i> Inscription</a>
             <?php endif; ?>
+        </div>
+    </div>
+
+    <header>
+        <div style="display:flex; align-items:center;">
+            <button onclick="toggleSidebar()" style="background:none; border:none; color:inherit; cursor:pointer; font-size:1.2rem; margin-right:1rem;"><i class="fas fa-bars"></i></button>
+            <div class="logo"><a href="index.php" style="text-decoration:none; color:inherit;">MicroSaaS</a></div>
+        </div>
+        <nav>
+            <a href="index.php"><i class="fas fa-shop"></i> Boutique</a>
             <a href="cart.php"><i class="fas fa-cart-shopping"></i> (<?php echo $cartCount; ?>)</a>
             <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
         </nav>

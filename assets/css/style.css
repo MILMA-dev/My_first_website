@@ -166,6 +166,65 @@ button, .btn {
     color: var(--primary-btn-text);
 }
 
+/* Sliding Sidebar */
+.sidebar {
+    position: fixed;
+    left: -280px;
+    top: 0;
+    width: 280px;
+    height: 100%;
+    background-color: var(--header-bg);
+    border-right: 1px solid var(--border-color);
+    transition: left 0.3s ease;
+    z-index: 2000;
+    padding: 2rem 1.5rem;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    color: var(--text-color);
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    border: 1px solid transparent;
+}
+
+.sidebar-nav a:hover {
+    border-color: var(--border-color);
+}
+
+.sidebar-nav i {
+    margin-right: 1rem;
+    width: 20px;
+}
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    z-index: 1999;
+}
+
+.sidebar-overlay.active {
+    display: block;
+}
+
 /* Dashboard Stats */
 .stats-grid {
     display: grid;
