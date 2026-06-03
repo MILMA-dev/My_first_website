@@ -1,0 +1,115 @@
+[Wed Jun  3 10:23:05 2026] PHP 8.3.6 Development Server (http://localhost:8000) started
+[Wed Jun  3 10:23:06 2026] [::1]:42436 Accepted
+[Wed Jun  3 10:23:06 2026] [::1]:42436 [200]: GET /register.php
+[Wed Jun  3 10:23:06 2026] [::1]:42436 Closing
+[Wed Jun  3 10:23:06 2026] [::1]:42452 Accepted
+[Wed Jun  3 10:23:06 2026] [::1]:42452 [200]: GET /assets/css/style.css
+[Wed Jun  3 10:23:06 2026] [::1]:42452 Closing
+[Wed Jun  3 10:23:07 2026] [::1]:42458 Accepted
+[Wed Jun  3 10:23:07 2026] [::1]:42458 [302]: POST /register.php
+[Wed Jun  3 10:23:07 2026] [::1]:42458 Closing
+[Wed Jun  3 10:23:07 2026] [::1]:42468 Accepted
+[Wed Jun  3 10:23:07 2026] [::1]:42468 [200]: GET /login.php?registered=1
+[Wed Jun  3 10:23:07 2026] [::1]:42468 Closing
+[Wed Jun  3 10:23:07 2026] [::1]:42470 Accepted
+[Wed Jun  3 10:23:07 2026] [::1]:42470 [200]: GET /assets/css/style.css
+[Wed Jun  3 10:23:07 2026] [::1]:42470 Closing
+[Wed Jun  3 10:23:08 2026] [::1]:42482 Accepted
+[Wed Jun  3 10:23:08 2026] [::1]:42482 [200]: GET /login.php
+[Wed Jun  3 10:23:08 2026] [::1]:42482 Closing
+[Wed Jun  3 10:23:08 2026] [::1]:42490 Accepted
+[Wed Jun  3 10:23:08 2026] [::1]:42490 [200]: GET /assets/css/style.css
+[Wed Jun  3 10:23:08 2026] [::1]:42490 Closing
+[Wed Jun  3 10:23:08 2026] [::1]:42498 Accepted
+[Wed Jun  3 10:23:08 2026] [::1]:42498 [302]: POST /login.php
+[Wed Jun  3 10:23:08 2026] [::1]:42498 Closing
+[Wed Jun  3 10:23:08 2026] [::1]:42500 Accepted
+[Wed Jun  3 10:23:08 2026] [::1]:42500 [200]: GET /index.php
+[Wed Jun  3 10:23:08 2026] [::1]:42500 Closing
+[Wed Jun  3 10:23:08 2026] [::1]:42514 Accepted
+[Wed Jun  3 10:23:08 2026] [::1]:42524 Accepted
+[Wed Jun  3 10:23:08 2026] [::1]:42530 Accepted
+[Wed Jun  3 10:23:08 2026] [::1]:42514 [200]: GET /assets/css/style.css
+[Wed Jun  3 10:23:08 2026] [::1]:42514 Closing
+[Wed Jun  3 10:23:08 2026] [::1]:42524 [200]: GET /uploads/covers/6a1fff69717f7.jpg
+[Wed Jun  3 10:23:08 2026] [::1]:42524 Closing
+[Wed Jun  3 10:23:08 2026] [::1]:42530 [404]: GET /uploads/covers/cover.jpg - No such file or directory
+[Wed Jun  3 10:23:08 2026] [::1]:42530 Closing
+[Wed Jun  3 10:23:09 2026] [::1]:42542 Accepted
+[Wed Jun  3 10:23:09 2026] [::1]:42542 [200]: GET /add_product.php
+[Wed Jun  3 10:23:09 2026] [::1]:42542 Closing
+[Wed Jun  3 10:23:09 2026] [::1]:42546 Accepted
+[Wed Jun  3 10:23:09 2026] [::1]:42546 [200]: GET /assets/css/style.css
+[Wed Jun  3 10:23:09 2026] [::1]:42546 Closing
+[Wed Jun  3 10:23:10 2026] [::1]:49004 Accepted
+[Wed Jun  3 10:23:10 2026] [::1]:49004 [302]: POST /add_product.php
+[Wed Jun  3 10:23:10 2026] [::1]:49004 Closing
+[Wed Jun  3 10:23:10 2026] [::1]:49008 Accepted
+[Wed Jun  3 10:23:10 2026] [::1]:49008 [200]: GET /dashboard.php
+[Wed Jun  3 10:23:10 2026] [::1]:49008 Closing
+[Wed Jun  3 10:23:10 2026] [::1]:49012 Accepted
+[Wed Jun  3 10:23:10 2026] [::1]:49012 [200]: GET /assets/css/style.css
+[Wed Jun  3 10:23:10 2026] [::1]:49012 Closing
+[Wed Jun  3 10:23:10 2026] [::1]:49018 Accepted
+[Wed Jun  3 10:23:10 2026] [::1]:49018 [200]: GET /uploads/covers/6a20008e43f35.jpg
+[Wed Jun  3 10:23:10 2026] [::1]:49018 Closing
+[Wed Jun  3 10:23:12 2026] [::1]:49024 Accepted
+[Wed Jun  3 10:23:12 2026] [::1]:49024 [200]: GET /index.php
+[Wed Jun  3 10:23:12 2026] [::1]:49024 Closing
+[Wed Jun  3 10:23:12 2026] [::1]:49032 Accepted
+[Wed Jun  3 10:23:12 2026] [::1]:49046 Accepted
+[Wed Jun  3 10:23:12 2026] [::1]:49050 Accepted
+[Wed Jun  3 10:23:12 2026] [::1]:49032 [200]: GET /assets/css/style.css
+[Wed Jun  3 10:23:12 2026] [::1]:49046 [200]: GET /uploads/covers/6a20008e43f35.jpg
+[Wed Jun  3 10:23:12 2026] [::1]:49032 Closing
+[Wed Jun  3 10:23:12 2026] [::1]:49046 Closing
+[Wed Jun  3 10:23:12 2026] [::1]:49050 [200]: GET /uploads/covers/6a1fff69717f7.jpg
+[Wed Jun  3 10:23:12 2026] [::1]:49050 Closing
+[Wed Jun  3 10:23:12 2026] [::1]:49062 Accepted
+[Wed Jun  3 10:23:12 2026] [::1]:49062 [404]: GET /uploads/covers/cover.jpg - No such file or directory
+[Wed Jun  3 10:23:12 2026] [::1]:49062 Closing
+[Wed Jun  3 10:23:12 2026] [::1]:49076 Accepted
+[Wed Jun  3 10:23:12 2026] [::1]:49076 [200]: GET /product_details.php?id=3
+[Wed Jun  3 10:23:12 2026] [::1]:49076 Closing
+[Wed Jun  3 10:23:12 2026] [::1]:49092 Accepted
+[Wed Jun  3 10:23:12 2026] [::1]:49098 Accepted
+[Wed Jun  3 10:23:12 2026] [::1]:49092 [200]: GET /assets/css/style.css
+[Wed Jun  3 10:23:12 2026] [::1]:49098 [200]: GET /uploads/covers/6a20008e43f35.jpg
+[Wed Jun  3 10:23:12 2026] [::1]:49092 Closing
+[Wed Jun  3 10:23:12 2026] [::1]:49098 Closing
+[Wed Jun  3 10:23:13 2026] [::1]:49106 Accepted
+[Wed Jun  3 10:23:13 2026] [::1]:49106 [302]: POST /product_details.php?id=3
+[Wed Jun  3 10:23:13 2026] [::1]:49106 Closing
+[Wed Jun  3 10:23:13 2026] [::1]:49114 Accepted
+[Wed Jun  3 10:23:13 2026] [::1]:49114 [200]: GET /cart.php
+[Wed Jun  3 10:23:13 2026] [::1]:49114 Closing
+[Wed Jun  3 10:23:13 2026] [::1]:49118 Accepted
+[Wed Jun  3 10:23:13 2026] [::1]:49118 [200]: GET /assets/css/style.css
+[Wed Jun  3 10:23:13 2026] [::1]:49118 Closing
+[Wed Jun  3 10:23:14 2026] [::1]:49132 Accepted
+[Wed Jun  3 10:23:14 2026] [::1]:49132 [200]: GET /checkout.php
+[Wed Jun  3 10:23:14 2026] [::1]:49132 Closing
+[Wed Jun  3 10:23:14 2026] [::1]:49142 Accepted
+[Wed Jun  3 10:23:14 2026] [::1]:49142 [200]: GET /assets/css/style.css
+[Wed Jun  3 10:23:14 2026] [::1]:49142 Closing
+[Wed Jun  3 10:23:14 2026] [::1]:49144 Accepted
+[Wed Jun  3 10:23:14 2026] [::1]:49144 [302]: POST /checkout.php
+[Wed Jun  3 10:23:14 2026] [::1]:49144 Closing
+[Wed Jun  3 10:23:14 2026] [::1]:49156 Accepted
+[Wed Jun  3 10:23:14 2026] [::1]:49156 [200]: GET /passerelle_paiement.php
+[Wed Jun  3 10:23:14 2026] [::1]:49156 Closing
+[Wed Jun  3 10:23:14 2026] [::1]:49172 Accepted
+[Wed Jun  3 10:23:14 2026] [::1]:49172 [200]: GET /assets/css/style.css
+[Wed Jun  3 10:23:14 2026] [::1]:49172 Closing
+[Wed Jun  3 10:23:16 2026] [::1]:49184 Accepted
+[Wed Jun  3 10:23:17 2026] [::1]:49184 [302]: POST /passerelle_paiement.php
+[Wed Jun  3 10:23:17 2026] [::1]:49184 Closing
+[Wed Jun  3 10:23:17 2026] [::1]:49198 Accepted
+[Wed Jun  3 10:23:17 2026] [::1]:49198 [200]: GET /my_purchases.php?success=1
+[Wed Jun  3 10:23:17 2026] [::1]:49198 Closing
+[Wed Jun  3 10:23:17 2026] [::1]:49210 Accepted
+[Wed Jun  3 10:23:17 2026] [::1]:49220 Accepted
+[Wed Jun  3 10:23:17 2026] [::1]:49210 [200]: GET /assets/css/style.css
+[Wed Jun  3 10:23:17 2026] [::1]:49220 [200]: GET /uploads/covers/6a20008e43f35.jpg
+[Wed Jun  3 10:23:17 2026] [::1]:49210 Closing
+[Wed Jun  3 10:23:17 2026] [::1]:49220 Closing
