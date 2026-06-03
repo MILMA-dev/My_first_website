@@ -1,6 +1,8 @@
 <?php
 require_once 'includes/db.php';
 require_once 'includes/auth.php';
+require_once 'includes/config.php';
+require_once 'includes/layout.php';
 
 if (isset($_GET['remove'])) {
     $remove_id = $_GET['remove'];
@@ -22,53 +24,44 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
         $total += $item['price'];
     }
 }
+
+renderHeader("Panier - MicroSaaS");
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Votre Panier - MicroSaaS</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="index.php">Boutique</a>
-        </nav>
-    </header>
-    <main>
-        <h2>Votre Panier</h2>
-        <?php if (empty($cart_items)): ?>
-            <p>Votre panier est vide. <a href="index.php">Parcourir les produits</a></p>
-        <?php else: ?>
-            <table class="cart-table">
-                <thead>
-                    <tr>
-                        <th>Produit</th>
-                        <th>Prix</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($cart_items as $item): ?>
-                    <tr>
-                        <td><?php echo e($item['title']); ?></td>
-                        <td><?php echo $item['price']; ?> €</td>
-                        <td><a href="cart.php?remove=<?php echo $item['id']; ?>">Supprimer</a></td>
-                    </tr>
-                    <?php endforeach; ?>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td><strong>Total</strong></td>
-                        <td colspan="2"><strong><?php echo $total; ?> €</strong></td>
-                    </tr>
-                </tfoot>
-            </table>
-            <div class="cart-actions">
-                <a href="checkout.php" class="btn btn-primary">Passer la commande</a>
-            </div>
-        <?php endif; ?>
-    </main>
-</body>
-</html>
+<h1>Votre Panier</h1>
+
+<?php if (empty($cart_items)): ?>
+    <p style="margin:2rem 0;">Votre panier est vide. <a href="index.php">Parcourir les produits</a></p>
+<?php else: ?>
+    <table class="product-table">
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Prix</th>
+                <th style="text-align:right;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($cart_items as $item): ?>
+            <tr>
+                <td><?php echo e($item['title']); ?></td>
+                <td><?php echo number_format($item['price'], 0, '.', ' '); ?> <?php echo CURRENCY; ?></td>
+                <td style="text-align:right;">
+                    <a href="cart.php?remove=<?php echo $item['id']; ?>" class="btn btn-outline" style="padding:0.3rem 0.6rem;">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+        <tfoot>
+            <tr style="font-size:1.5rem; font-weight:800;">
+                <td>Total</td>
+                <td colspan="2"><?php echo number_format($total, 0, '.', ' '); ?> <?php echo CURRENCY; ?></td>
+            </tr>
+        </tfoot>
+    </table>
+    <div style="margin-top:2rem; text-align:right;">
+        <a href="checkout.php" class="btn btn-primary" style="padding: 1rem 3rem;">Passer la commande</a>
+    </div>
+<?php endif; ?>
+<?php renderFooter(); ?>
