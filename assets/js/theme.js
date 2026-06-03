@@ -16,12 +16,24 @@ function updateToggleIcon(theme) {
 }
 
 function toggleSidebar() {
-    document.getElementById('sidebar').classList.toggle('active');
-    document.getElementById('sidebarOverlay').classList.toggle('active');
+    const sidebar = document.getElementById('sidebar');
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+        sidebar.classList.toggle('active');
+    } else {
+        sidebar.classList.toggle('collapsed');
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Theme
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
     updateToggleIcon(savedTheme);
+
+    // Initial sidebar state for mobile
+    if (window.innerWidth <= 768) {
+        document.getElementById('sidebar').classList.remove('collapsed');
+    }
 });

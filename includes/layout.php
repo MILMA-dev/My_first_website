@@ -12,9 +12,10 @@ if (isLoggedIn()) {
 
 function renderHeader($title = "MicroSaaS") {
     $cartCount = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+    $currentPage = basename($_SERVER['PHP_SELF']);
     ?>
     <!DOCTYPE html>
-    <html lang="fr">
+    <html lang="fr" data-theme="light">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,51 +27,64 @@ function renderHeader($title = "MicroSaaS") {
     </head>
     <body>
 
-    <div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
-    <div id="sidebar" class="sidebar">
-        <div class="sidebar-header">
-            <div class="logo">MicroSaaS</div>
-            <button onclick="toggleSidebar()" style="background:none; border:none; color:inherit; cursor:pointer;"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="sidebar-nav">
-            <a href="index.php"><i class="fas fa-house"></i> Accueil</a>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">MicroSaaS</div>
+        <ul class="sidebar-menu">
+            <a href="index.php"><li class="<?php echo $currentPage == 'index.php' ? 'active' : ''; ?>"><i class="fas fa-shop"></i> Boutique</li></a>
             <?php if (isLoggedIn()): ?>
-                <a href="profile.php"><i class="fas fa-user"></i> Mon Profil</a>
-                <a href="my_purchases.php"><i class="fas fa-bag-shopping"></i> Mes Achats</a>
-                <a href="history.php"><i class="fas fa-clock-rotate-left"></i> Historique</a>
+                <a href="my_purchases.php"><li class="<?php echo $currentPage == 'my_purchases.php' ? 'active' : ''; ?>"><i class="fas fa-bag-shopping"></i> Mes Achats</li></a>
+                <a href="history.php"><li class="<?php echo $currentPage == 'history.php' ? 'active' : ''; ?>"><i class="fas fa-clock-rotate-left"></i> Historique</li></a>
                 <?php if (hasRole('seller') || hasRole('admin')): ?>
-                    <a href="dashboard.php"><i class="fas fa-chart-line"></i> Dashboard Vendeur</a>
+                    <a href="dashboard.php"><li class="<?php echo $currentPage == 'dashboard.php' ? 'active' : ''; ?>"><i class="fas fa-chart-line"></i> Dashboard Vendeur</li></a>
                 <?php endif; ?>
                 <?php if (hasRole('admin')): ?>
-                    <a href="admin_dashboard.php"><i class="fas fa-user-shield"></i> Administration</a>
+                    <a href="admin_dashboard.php"><li class="<?php echo $currentPage == 'admin_dashboard.php' ? 'active' : ''; ?>"><i class="fas fa-user-shield"></i> Administration</li></a>
                 <?php endif; ?>
-                <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border-color);">
-                <a href="logout.php" style="color: var(--error-color);"><i class="fas fa-right-from-bracket"></i> Déconnexion</a>
+                <a href="profile.php"><li class="<?php echo $currentPage == 'profile.php' ? 'active' : ''; ?>"><i class="fas fa-user"></i> Mon Profil</li></a>
             <?php else: ?>
-                <a href="login.php"><i class="fas fa-sign-in-alt"></i> Connexion</a>
-                <a href="register.php"><i class="fas fa-user-plus"></i> Inscription</a>
+                <a href="login.php"><li><i class="fas fa-sign-in-alt"></i> Connexion</li></a>
+                <a href="register.php"><li><i class="fas fa-user-plus"></i> Inscription</li></a>
+            <?php endif; ?>
+        </ul>
+        <div class="sidebar-footer">
+            <?php if (isLoggedIn()): ?>
+                <a href="logout.php" class="btn btn-outline" style="width:100%; border-color: var(--text-muted); color: var(--text-muted); text-align:center;">
+                    <i class="fas fa-right-from-bracket"></i> Déconnexion
+                </a>
             <?php endif; ?>
         </div>
-    </div>
+    </aside>
 
-    <header>
-        <div style="display:flex; align-items:center;">
-            <button onclick="toggleSidebar()" style="background:none; border:none; color:inherit; cursor:pointer; font-size:1.2rem; margin-right:1rem;"><i class="fas fa-bars"></i></button>
-            <div class="logo"><a href="index.php" style="text-decoration:none; color:inherit;">MicroSaaS</a></div>
-        </div>
-        <nav>
-            <a href="index.php"><i class="fas fa-shop"></i> Boutique</a>
-            <a href="cart.php"><i class="fas fa-cart-shopping"></i> (<?php echo $cartCount; ?>)</a>
-            <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+    <div class="main-content">
+        <nav class="navbar">
+            <button class="hamburger-btn" id="hamburger-btn" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div style="display:flex; align-items:center; gap:20px;">
+                <a href="cart.php" style="text-decoration:none; color:inherit;">
+                    <i class="fas fa-cart-shopping"></i> (<?php echo $cartCount; ?>)
+                </a>
+                <button class="theme-toggle" onclick="toggleTheme()" style="background:none; border:none; cursor:pointer; color:inherit; font-size:1.1rem;">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <?php if (isLoggedIn()): ?>
+                <div class="user-profile">
+                    <span><?php echo e($_SESSION['username']); ?></span>
+                    <div style="width:35px; height:35px; background:#000; color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; border: 1px solid var(--border-color);">
+                        <?php echo strtoupper(substr($_SESSION['username'], 0, 1)); ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+            </div>
         </nav>
-    </header>
-    <main>
+        <div class="page-content">
     <?php
 }
 
 function renderFooter() {
     ?>
-    </main>
+        </div>
+    </div>
     </body>
     </html>
     <?php
